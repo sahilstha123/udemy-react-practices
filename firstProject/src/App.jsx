@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header";
 import Coreconcept from "./components/Coreconcept";
-import components from "./assets/components.png"
+import { CORE_CONCEPTS } from "../data";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -9,15 +10,24 @@ function App() {
       <div className="container mx-auto">
         <Header />
         <section className=" flex justify-center">
-          <div className="bg-black p-6 rounded-lg mt-6 w-4xl">
+          <div className="bg-black p-6 rounded-lg  w-5xl m-4 ">
             <main>
               <h2 className=" text-2xl font-semibold text-purple-500 mb-4 text-center">
                 Core Concepts
               </h2>
-              <Coreconcept image={components} title={"Components"} description = {"The core UI building block"}/>
+              <div className="flex gap-3 flex-wrap flex-grow">
+                {/* <Coreconcept {...CORE_CONCEPTS[0]} /> */}
+                {
+                  CORE_CONCEPTS.map((item,index)=>{
+                    return <Coreconcept key = {index} {...item}/>
+                  })
+                }
+               
+              </div>
             </main>
           </div>
         </section>
+        <Footer/>
       </div>
     </div>
   );
