@@ -9,7 +9,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
+    <div >
       <header>
         <div className="flex justify-center">
           <img src={reactLogo} alt="" width="250px" height="150px" />
