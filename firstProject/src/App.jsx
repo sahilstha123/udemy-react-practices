@@ -4,8 +4,15 @@ import Coreconcept from "./components/Coreconcept";
 import { CORE_CONCEPTS } from "../data";
 import Footer from "./components/Footer";
 import Tabbutton from "./components/Tabbutton";
+import { useState } from "react";
 
 function App() {
+  const [selectTopic, setSelectTopic] = useState("please click a button")
+  const handleOnclick = (selectedButton)=>{
+    setSelectTopic(selectedButton)
+    console.log(selectedButton)
+  }
+  
   return (
     <div className="bg-indigo-950 min-h-screen">
       <div className="container mx-auto">
@@ -32,11 +39,12 @@ function App() {
               Example
             </h2>
             <menu className="flex ">
-              <Tabbutton>Components</Tabbutton>
-              <Tabbutton>JSX</Tabbutton>
-              <Tabbutton>Props</Tabbutton>
-              <Tabbutton>State</Tabbutton>
+              <Tabbutton onCLick = {()=>handleOnclick('components')}>Components</Tabbutton>
+              <Tabbutton onCLick = {()=>handleOnclick('JSX')}>JSX</Tabbutton>
+              <Tabbutton onCLick = {()=>handleOnclick('Props')}>Props</Tabbutton>
+              <Tabbutton onCLick = {()=>handleOnclick('State')}>State</Tabbutton>
             </menu>
+            {selectTopic}
           </section>
         </main>
         <Footer />
