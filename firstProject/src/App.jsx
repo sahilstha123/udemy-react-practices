@@ -41,15 +41,15 @@ function App() {
             <h2 className="text-2xl font-semibold text-purple-500 mb-4 ">
               Example
             </h2>
-            <menu className="flex ">
-              <Tabbutton onCLick={() => handleOnclick("components")}>
+            <menu className="flex  gap-1">
+              <Tabbutton onCLick={() => handleOnclick("components")} isSelected={selectTopic==="components"}>
                 Components
               </Tabbutton>
-              <Tabbutton onCLick={() => handleOnclick("JSX")}>JSX</Tabbutton>
-              <Tabbutton onCLick={() => handleOnclick("Props")}>
+              <Tabbutton onCLick={() => handleOnclick("JSX")} isSelected={selectTopic=== "JSX"}>JSX</Tabbutton>
+              <Tabbutton onCLick={() => handleOnclick("Props")} isSelected={selectTopic==="Props"}>
                 Props
               </Tabbutton>
-              <Tabbutton onCLick={() => handleOnclick("State")}>
+              <Tabbutton onCLick={() => handleOnclick("State")} isSelected={selectTopic==="State"}>
                 State
               </Tabbutton>
             </menu>
@@ -69,16 +69,19 @@ function App() {
               return null;
             })} */}
             {selectTopic ? (
-              <div
-                
-                className="bg-purple-950 w-full max-w-[750px] md:max-w-5xl rounded-md p-4 mt-3 text-gray-300"
-              >
-                <h3 className="font-bold text-xl">{EXAMPLES[selectTopic].title}</h3>
-                <p className="font-light">{EXAMPLES[selectTopic].description}</p>
+              <div className="bg-purple-950 w-full max-w-[750px] md:max-w-5xl rounded-md p-4 mt-3 text-gray-300">
+                <h3 className="font-bold text-xl">
+                  {EXAMPLES[selectTopic].title}
+                </h3>
+                <p className="font-light">
+                  {EXAMPLES[selectTopic].description}
+                </p>
                 <CodeBlock code={EXAMPLES[selectTopic].code} />
               </div>
             ) : (
-              <p className="mt-4 text-red-600 font-sans">Please Select a Topic</p>
+              <p className="mt-4 text-red-600 font-sans">
+                Please Select a Topic
+              </p>
             )}
           </section>
         </main>

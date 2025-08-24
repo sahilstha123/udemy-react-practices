@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import "./CodeBlock.css"
 
 const CodeBlock = ({ code }) => {
   const [copied, setCopied] = useState(false);
@@ -26,7 +27,7 @@ const CodeBlock = ({ code }) => {
       </button>
       {/* Copied text */}
         {copied && (
-          <span className="bg-green-400 text-xs font-semibold absolute top-2 right-14 px-4 py-1 rounded-md text-black animate-bounce ">
+          <span className=" text-xs font-semibold absolute top-2 right-17 px-4 py-1  text-black animate-bounce " id="talkbubble">
             Copied!
           </span>
         )}
