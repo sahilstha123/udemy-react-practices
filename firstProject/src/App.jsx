@@ -10,7 +10,7 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import CodeBlock from "./components/CodeBlock";
 
 function App() {
-  const [selectTopic, setSelectTopic] = useState("components");
+  const [selectTopic, setSelectTopic] = useState("");
   const handleOnclick = (selectedButton) => {
     setSelectTopic(selectedButton);
     console.log(selectedButton);
@@ -53,7 +53,7 @@ function App() {
                 State
               </Tabbutton>
             </menu>
-            {Object.keys(EXAMPLES).map((key) => {
+            {/* {Object.keys(EXAMPLES).map((key) => {
               if (key === selectTopic) {
                 return (
                   <div
@@ -67,7 +67,19 @@ function App() {
                 );
               }
               return null;
-            })}
+            })} */}
+            {selectTopic ? (
+              <div
+                
+                className="bg-purple-950 w-full max-w-[750px] md:max-w-5xl rounded-md p-4 mt-3 text-gray-300"
+              >
+                <h3 className="font-bold text-xl">{EXAMPLES[selectTopic].title}</h3>
+                <p className="font-light">{EXAMPLES[selectTopic].description}</p>
+                <CodeBlock code={EXAMPLES[selectTopic].code} />
+              </div>
+            ) : (
+              <p className="mt-4 text-red-600 font-sans">Please Select a Topic</p>
+            )}
           </section>
         </main>
         <Footer />
