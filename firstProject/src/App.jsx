@@ -1,13 +1,12 @@
 import "./App.css";
 import Header from "./components/Header";
 import Coreconcept from "./components/Coreconcept";
-import { CORE_CONCEPTS, EXAMPLES } from "../data";
+import { CORE_CONCEPTS } from "../data";
 import Footer from "./components/Footer";
-import Tabbutton from "./components/Tabbutton";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
-import CodeBlock from "./components/CodeBlock";
+import Example from "./components/Example";
 
 function App() {
   const [selectTopic, setSelectTopic] = useState("");
@@ -38,51 +37,7 @@ function App() {
 
           {/* example */}
           <section className="container mx-auto  pl-4 xl:pl-64 pr-4">
-            <h2 className="text-2xl font-semibold text-purple-500 mb-4 ">
-              Example
-            </h2>
-            <menu className="flex  gap-1">
-              <Tabbutton onCLick={() => handleOnclick("components")} isSelected={selectTopic==="components"}>
-                Components
-              </Tabbutton>
-              <Tabbutton onCLick={() => handleOnclick("JSX")} isSelected={selectTopic=== "JSX"}>JSX</Tabbutton>
-              <Tabbutton onCLick={() => handleOnclick("Props")} isSelected={selectTopic==="Props"}>
-                Props
-              </Tabbutton>
-              <Tabbutton onCLick={() => handleOnclick("State")} isSelected={selectTopic==="State"}>
-                State
-              </Tabbutton>
-            </menu>
-            {/* {Object.keys(EXAMPLES).map((key) => {
-              if (key === selectTopic) {
-                return (
-                  <div
-                    key={key}
-                    className="bg-purple-950 w-full max-w-[750px] md:max-w-5xl rounded-md p-4 mt-3 text-gray-300"
-                  >
-                    <h3 className="font-bold text-xl">{EXAMPLES[key].title}</h3>
-                    <p className="font-light">{EXAMPLES[key].description}</p>
-                    <CodeBlock code={EXAMPLES[key].code} />
-                  </div>
-                );
-              }
-              return null;
-            })} */}
-            {selectTopic ? (
-              <div className="bg-purple-950 w-full max-w-[750px] md:max-w-5xl rounded-md p-4 mt-3 text-gray-300">
-                <h3 className="font-bold text-xl">
-                  {EXAMPLES[selectTopic].title}
-                </h3>
-                <p className="font-light">
-                  {EXAMPLES[selectTopic].description}
-                </p>
-                <CodeBlock code={EXAMPLES[selectTopic].code} />
-              </div>
-            ) : (
-              <p className="mt-4 text-red-600 font-sans">
-                Please Select a Topic
-              </p>
-            )}
+            <Example handleOnclick={handleOnclick} selectTopic={selectTopic}/>
           </section>
         </main>
         <Footer />
