@@ -8,25 +8,25 @@ const Example = ({handleOnclick, selectTopic}) => {
       <h2 className="text-2xl font-semibold text-purple-500 mb-4 ">Example</h2>
       <menu className="flex  gap-1">
         <Tabbutton
-          onCLick={() => handleOnclick("components")}
+          onClick={() => handleOnclick("components")}
           isSelected={selectTopic === "components"}
         >
           Components
         </Tabbutton>
         <Tabbutton
-          onCLick={() => handleOnclick("JSX")}
+          onClick={() => handleOnclick("JSX")}
           isSelected={selectTopic === "JSX"}
         >
           JSX
         </Tabbutton>
         <Tabbutton
-          onCLick={() => handleOnclick("Props")}
+          onClick={() => handleOnclick("Props")}
           isSelected={selectTopic === "Props"}
         >
           Props
         </Tabbutton>
         <Tabbutton
-          onCLick={() => handleOnclick("State")}
+          onClick={() => handleOnclick("State")}
           isSelected={selectTopic === "State"}
         >
           State
