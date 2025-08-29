@@ -39,7 +39,7 @@ const Player = ({ player, symbol }) => {
 
       <button
         onClick={handleOnClick}
-        className="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded-md text-sm w-[80%]  sm:w-24"
+        className="primary-color  px-3 py-1 rounded-md text-sm w-[80%]  sm:w-24"
       >
         {isEditing ? "Save" : "Edit"}
       </button>

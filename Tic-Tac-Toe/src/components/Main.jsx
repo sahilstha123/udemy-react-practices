@@ -1,5 +1,6 @@
 import React from "react";
 import Player from "./Player";
+import Gameboard from "./Gameboard";
 
 const Main = () => {
   return (
@@ -11,6 +12,7 @@ const Main = () => {
            <Player player="player 1" symbol = "X"/>
            <Player player="player 2" symbol = "0"/>
           </ol>
+          <Gameboard/>
         </div>
       </div>
     </main>
