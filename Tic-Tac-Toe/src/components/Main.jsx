@@ -1,4 +1,5 @@
 import React from "react";
+import Player from "./Player";
 
 const Main = () => {
   return (
@@ -6,20 +7,9 @@ const Main = () => {
       <div className="flex justify-center mt-15">
         <div className="bg-gray-700 w-11/12 sm:w-8/12 md:w-6/12 lg:w-5/12 text-white p-10 rounded-md">
           <ol className="flex justify-between">
-            <li className="flex gap-2">
-              <span className="flex gap-7">
-                <span>Player 1</span>
-                <span>X</span>
-              </span>
-              <button>Edit</button>
-            </li>
-            <li className="flex gap-2">
-              <span className="flex gap-7">
-                <span>Player 2</span>
-                <span>O</span>
-              </span>
-              <button>Edit</button>
-            </li>
+            
+           <Player player="player 1" symbol = "X"/>
+           <Player player="player 2" symbol = "0"/>
           </ol>
         </div>
       </div>
