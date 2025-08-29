@@ -8,10 +8,10 @@ const initialGameboard = [
 
 const Gameboard = () => {
   return (
-    <ol className="flex flex-col items-center gap-2 m-9">
+    <ol className="flex flex-col items-center gap-4 m-9">
       {initialGameboard.map((row, rowIndex) => (
         <li key={rowIndex}>
-          <ol className="flex gap-2">
+          <ol className="flex gap-4">
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
                 <button

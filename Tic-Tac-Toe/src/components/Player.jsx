@@ -12,20 +12,19 @@ const Player = ({ player, symbol }) => {
     setPlayerName(e.target.value);
   };
 
-  const keyDown = (e)=>{
-    if(e.key === "Enter")
-    {
-        setisEditing(false)
+  const keyDown = (e) => {
+    if (e.key === "Enter") {
+      setisEditing(false);
     }
-  }
+  };
   return (
-    <li className="flex flex-col sm:flex-row gap-2 items-start sm:items-center">
+    <li className="flex flex-col sm:flex-row md:flex-none gap-2 items-start sm:items-center">
       <span className="flex gap-4 flex-wrap items-center">
         {isEditing ? (
           <input
             type="text"
             // defaultValue={player}
-            className="bg-gray-400 px-3 py-1 w-full sm:w-32 max-w-[150px] focus:outline-none rounded-md mr-4"
+            className="bg-gray-400 px-3 py-1 w-full sm:w-32  md:w-[90px] mr-2  md:mr-0 lg:mr-2 max-w-[150px] focus:outline-none rounded-md "
             value={playerName}
             onChange={handleOnChange}
             onKeyDown={keyDown}
@@ -39,7 +38,7 @@ const Player = ({ player, symbol }) => {
 
       <button
         onClick={handleOnClick}
-        className="primary-color  px-3 py-1 rounded-md text-sm w-[80%]  sm:w-24"
+        className="primary-color  px-3 py-1 rounded-md text-sm w-[80%]  md:w-20 lg:w-28  sm:w-24"
       >
         {isEditing ? "Save" : "Edit"}
       </button>
