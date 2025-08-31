@@ -6,16 +6,17 @@ const initialGameboard = [
   [null, null, null],
 ];
 
-const Gameboard = () => {
+const Gameboard = ({OnSelectPlayer, ActivePlayer}) => {
   const [gameBoard, setGameBoard] = useState(initialGameboard);
 
   const handleOnClick = (rowIndex, colIndex) => {
     setGameBoard((prevGameboard) => {
       const updatedGameboard = prevGameboard.map(innerArry => [...innerArry]);
-      updatedGameboard[rowIndex][colIndex] = "X";
+      updatedGameboard[rowIndex][colIndex] = ActivePlayer;
       console.log(updatedGameboard);
       return updatedGameboard;
     });
+    OnSelectPlayer()
   };
 
   return (

@@ -2,17 +2,18 @@ import React from "react";
 import Player from "./Player";
 import Gameboard from "./Gameboard";
 
-const Main = () => {
+const Main = ({ActivePlayer, OnSelectPlayer, handleOnclick}) => {
+  
   return (
     <main>
       <div className="flex justify-center mt-15">
         <div className="bg-gray-700 w-11/12 sm:w-8/12 lg:w-5/12 text-white p-10 rounded-md shadow-2xl">
           <ol className="flex justify-between gap-2">
             
-           <Player player="player 1" symbol = "X"/>
-           <Player player="player 2" symbol = "0"/>
+           <Player player="player 1" symbol = "X" isActive = {ActivePlayer === "X"}/>
+           <Player player="player 2" symbol = "0" isActive = {ActivePlayer === "O"}/>
           </ol>
-          <Gameboard/>
+          <Gameboard ActivePlayer={ActivePlayer} OnSelectPlayer={OnSelectPlayer} handleOnclick={handleOnclick} />
         </div>
       </div>
     </main>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Player = ({ player, symbol }) => {
+const Player = ({ player, symbol,isActive }) => {
   const [playerName, setPlayerName] = useState(player);
   const [isEditing, setisEditing] = useState(false);
 
@@ -19,7 +19,7 @@ const Player = ({ player, symbol }) => {
   };
   return (
     <li className="flex flex-col sm:flex-row md:flex-none gap-2 items-start sm:items-center">
-      <span className="flex gap-4 flex-wrap items-center">
+      <span className={`flex gap-4 flex-wrap items-center ${isActive ? "border-2 rounded-lg border-pink-400 px-4 py-2":""}`}>
         {isEditing ? (
           <input
             type="text"
