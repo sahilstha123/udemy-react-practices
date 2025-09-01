@@ -43,6 +43,7 @@ const Gameboard = ({ OnSelectPlayer, turns }) => {
                     text-4xl font-serif
                   "
                   onClick={() => OnSelectPlayer(rowIndex, colIndex)}
+                  disabled = {playerSymbol!==null}
                 >
                   {playerSymbol}
                 </button>
