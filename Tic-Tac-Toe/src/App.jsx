@@ -5,6 +5,7 @@ import Main from "./components/Main";
 function App() {
   const [activePlayer, setActivePlayer] = useState("X")
   
+  
   const handleOnSelect = ()=>{
     setActivePlayer((curActivePlayer)=>curActivePlayer === "X" ? "O":"X")
   }
