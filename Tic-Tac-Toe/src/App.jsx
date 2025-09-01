@@ -31,8 +31,8 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Main OnSelectPlayer={handleOnSelect}  turns={gameTurn} />
-      <Log />
+      <Main OnSelectPlayer={handleOnSelect}  turns={gameTurn} ActivePlayer={activePlayer} />
+      <Log turns = {gameTurn}/>
     </div>
   );
 }

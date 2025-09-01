@@ -1,8 +1,14 @@
 import React from 'react'
 
-const Log = () => {
+const Log = ({turns}) => {
   return (
-    <div>Log</div>
+    <div className='flex justify-center mt-4'>
+      <ol>
+        {
+          turns.map((item)=><li key={`${item.square.row}${item.square.col}`}>{item.player} selected {item.square.row}, {item.square.col}</li>)
+        }
+      </ol>
+    </div>
   )
 }
 
