@@ -2,7 +2,7 @@ import React from "react";
 import Player from "./Player";
 import Gameboard from "./Gameboard";
 
-const Main = ({ActivePlayer, OnSelectPlayer, handleOnclick}) => {
+const Main = ({ActivePlayer, OnSelectPlayer, turns}) => {
   
   return (
     <main>
@@ -13,7 +13,7 @@ const Main = ({ActivePlayer, OnSelectPlayer, handleOnclick}) => {
            <Player player="player 1" symbol = "X" isActive = {ActivePlayer === "X"}/>
            <Player player="player 2" symbol = "0" isActive = {ActivePlayer === "O"}/>
           </ol>
-          <Gameboard ActivePlayer={ActivePlayer} OnSelectPlayer={OnSelectPlayer} handleOnclick={handleOnclick} />
+          <Gameboard  OnSelectPlayer={OnSelectPlayer} turns = {turns} />
         </div>
       </div>
     </main>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
 const initialGameboard = [
   [null, null, null],
@@ -6,18 +6,24 @@ const initialGameboard = [
   [null, null, null],
 ];
 
-const Gameboard = ({OnSelectPlayer, ActivePlayer}) => {
-  const [gameBoard, setGameBoard] = useState(initialGameboard);
+const Gameboard = ({ OnSelectPlayer, turns }) => {
+  let gameBoard = initialGameboard.map((innerArray) => [...innerArray]);
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+    gameBoard[row][col] = player;
+  }
+  // const [gameBoard, setGameBoard] = useState(initialGameboard);
 
-  const handleOnClick = (rowIndex, colIndex) => {
-    setGameBoard((prevGameboard) => {
-      const updatedGameboard = prevGameboard.map(innerArry => [...innerArry]);
-      updatedGameboard[rowIndex][colIndex] = ActivePlayer;
-      console.log(updatedGameboard);
-      return updatedGameboard;
-    });
-    OnSelectPlayer()
-  };
+  // const handleOnClick = (rowIndex, colIndex) => {
+  //   setGameBoard((prevGameboard) => {
+  //     const updatedGameboard = prevGameboard.map(innerArry => [...innerArry]);
+  //     updatedGameboard[rowIndex][colIndex] = ActivePlayer;
+  //     console.log(updatedGameboard);
+  //     return updatedGameboard;
+  //   });
+  //   OnSelectPlayer()
+  // };
 
   return (
     <ol className="flex flex-col items-center gap-4 m-9">
@@ -36,7 +42,7 @@ const Gameboard = ({OnSelectPlayer, ActivePlayer}) => {
                     cursor-pointer
                     text-4xl font-serif
                   "
-                  onClick={() => handleOnClick(rowIndex, colIndex)}
+                  onClick={() => OnSelectPlayer(rowIndex, colIndex)}
                 >
                   {playerSymbol}
                 </button>
