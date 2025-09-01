@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Log from "./components/Log";
-
-function App() {
-  const [activePlayer, setActivePlayer] = useState("X");
-  const [gameTurn, setGameTurn] = useState([]);
-
-  const handleOnSelect = (rowIndex,colIndex) => {
-    setActivePlayer((curActivePlayer) => (curActivePlayer === "X" ? "O" : "X"));
-    setGameTurn((prevTurns) => {
-      let currentPlayer = "X";
-      if (prevTurns.length > 0 && prevTurns[0].player === "X") {
+// helper function
+const deriveactivePlayer = (gameTurns)=>{
+let currentPlayer = "X";
+      if (gameTurns.length > 0 && gameTurns[0].player === "X") {
         currentPlayer = "O";
       }
+      return currentPlayer
+}
+function App() {
+  const [gameTurn, setGameTurn] = useState([]);
+  const activePlayer = deriveactivePlayer(gameTurn)
+
+  const handleOnSelect = (rowIndex,colIndex) => {
+    setGameTurn((prevTurns) => {
+      const currentPlayer = deriveactivePlayer(prevTurns)
       const updateTurns = [
         {
           square: { row: rowIndex, col: colIndex },
