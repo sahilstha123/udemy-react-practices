@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Main from "./components/Main";
 import Log from "./components/Log";
 import { WINNING_COMBINATION } from "./winning-combination";
+import GameOver from "./components/GameOver";
+import "./App.css";
 
 const initialGameboard = [
   [null, null, null],
@@ -10,7 +12,6 @@ const initialGameboard = [
   [null, null, null],
 ];
 
-let winnerSymbol = null
 // helper function
 const deriveActivePlayer = (gameTurns) => {
   let currentPlayer = "X";
@@ -22,6 +23,7 @@ const deriveActivePlayer = (gameTurns) => {
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
+  const [winner, setWinner] = useState(null);
 
   // derive active player
   const activePlayer = deriveActivePlayer(gameTurns);
@@ -34,18 +36,30 @@ function App() {
     gameBoard[row][col] = player;
   }
 
-  for (const combination of WINNING_COMBINATION) {
-  const firstSquareSymbol  = gameBoard[combination[0].row][combination[0].col];
-  const secondSquareSymbol = gameBoard[combination[1].row][combination[1].col];
-  const thirdSquareSymbol  = gameBoard[combination[2].row][combination[2].col];
+  useEffect(() => {
+    let newWinner = null
+    for (const combination of WINNING_COMBINATION) {
+      const firstSquareSymbol =
+        gameBoard[combination[0].row][combination[0].col];
+      const secondSquareSymbol =
+        gameBoard[combination[1].row][combination[1].col];
+      const thirdSquareSymbol =
+        gameBoard[combination[2].row][combination[2].col];
 
-  if (firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol)
-  {
-    console.log("you win")
-    winnerSymbol = firstSquareSymbol
-  }
-}
+      if (
+        firstSquareSymbol &&
+        firstSquareSymbol === secondSquareSymbol &&
+        firstSquareSymbol === thirdSquareSymbol
+      ) {
+        console.log("you win");
+        newWinner = firstSquareSymbol
+        break
+      }
+    }
+    setWinner(newWinner)
+  },[gameTurns]);
 
+  const hasdraw = gameTurns.length === 9 && !winner;
 
   const handleOnSelect = (rowIndex, colIndex) => {
     setGameTurns((prevTurns) => {
@@ -69,7 +83,8 @@ function App() {
         OnSelectPlayer={handleOnSelect}
         gameboard={gameBoard}
         ActivePlayer={activePlayer}
-        winnerSymbol={winnerSymbol}
+        winner={winner}
+        draw={hasdraw}
       />
       <Log turns={gameTurns} />
     </div>

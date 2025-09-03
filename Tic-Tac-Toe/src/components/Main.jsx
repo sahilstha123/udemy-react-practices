@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import Player from "./Player";
 import Gameboard from "./Gameboard";
+import GameOver from "./GameOver";
 
-const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winnerSymbol}) => {
+const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winner, draw}) => {
   
   return (
-    <main>
+    <main className="relative">
       <div className="flex justify-center mt-15">
         <div className="bg-gray-700 w-11/12 sm:w-8/12 lg:w-5/12 text-white p-10 rounded-md shadow-2xl">
           <ol className="flex justify-between gap-2">
@@ -13,10 +14,10 @@ const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winnerSymbol}) => {
            <Player player="player 1" symbol = "X" isActive = {ActivePlayer === "X"}/>
            <Player player="player 2" symbol = "0" isActive = {ActivePlayer === "O"}/>
           </ol>
-          {winnerSymbol && <p>You won {winnerSymbol}!</p>}
           <Gameboard  OnSelectPlayer={OnSelectPlayer} gameboard = {gameboard} />
         </div>
       </div>
+      {(winner || draw) && <GameOver winner={winner}/>}
     </main>
   );
 };
