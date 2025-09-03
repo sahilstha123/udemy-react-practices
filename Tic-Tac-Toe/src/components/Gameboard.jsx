@@ -1,18 +1,9 @@
 // import React, { useState } from "react";
 
-const initialGameboard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
 
-const Gameboard = ({ OnSelectPlayer, turns }) => {
-  let gameBoard = initialGameboard.map((innerArray) => [...innerArray]);
-  for (const turn of turns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-    gameBoard[row][col] = player;
-  }
+
+const Gameboard = ({ OnSelectPlayer, gameboard }) => {
+ 
   // const [gameBoard, setGameBoard] = useState(initialGameboard);
 
   // const handleOnClick = (rowIndex, colIndex) => {
@@ -27,7 +18,7 @@ const Gameboard = ({ OnSelectPlayer, turns }) => {
 
   return (
     <ol className="flex flex-col items-center gap-4 m-9">
-      {gameBoard.map((row, rowIndex) => (
+      {gameboard.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol className="flex gap-4">
             {row.map((playerSymbol, colIndex) => (
