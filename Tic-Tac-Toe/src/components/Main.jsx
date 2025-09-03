@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Player from "./Player";
 import Gameboard from "./Gameboard";
 
-const Main = ({ActivePlayer, OnSelectPlayer, gameboard}) => {
+const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winnerSymbol}) => {
   
   return (
     <main>
@@ -13,6 +13,7 @@ const Main = ({ActivePlayer, OnSelectPlayer, gameboard}) => {
            <Player player="player 1" symbol = "X" isActive = {ActivePlayer === "X"}/>
            <Player player="player 2" symbol = "0" isActive = {ActivePlayer === "O"}/>
           </ol>
+          {winnerSymbol && <p>You won {winnerSymbol}!</p>}
           <Gameboard  OnSelectPlayer={OnSelectPlayer} gameboard = {gameboard} />
         </div>
       </div>

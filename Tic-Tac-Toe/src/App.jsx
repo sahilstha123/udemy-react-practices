@@ -10,6 +10,7 @@ const initialGameboard = [
   [null, null, null],
 ];
 
+let winnerSymbol = null
 // helper function
 const deriveActivePlayer = (gameTurns) => {
   let currentPlayer = "X";
@@ -41,9 +42,8 @@ function App() {
   if (firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol)
   {
     console.log("you win")
+    winnerSymbol = firstSquareSymbol
   }
-  console.log("combination",combination);
-  // console.log("---",firstSquareSymbol, secondSquareSymbol, thirdSquareSymbol);
 }
 
 
@@ -69,6 +69,7 @@ function App() {
         OnSelectPlayer={handleOnSelect}
         gameboard={gameBoard}
         ActivePlayer={activePlayer}
+        winnerSymbol={winnerSymbol}
       />
       <Log turns={gameTurns} />
     </div>
