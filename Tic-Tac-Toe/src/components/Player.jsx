@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
-const Player = ({ player, symbol,isActive }) => {
+const Player = ({ player, symbol, isActive, onChangeName }) => {
   const [playerName, setPlayerName] = useState(player);
   const [isEditing, setisEditing] = useState(false);
 
   const handleOnClick = () => {
     setisEditing((editing) => !editing);
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   };
 
   const handleOnChange = (e) => {
@@ -15,11 +18,16 @@ const Player = ({ player, symbol,isActive }) => {
   const keyDown = (e) => {
     if (e.key === "Enter") {
       setisEditing(false);
+      onChangeName(symbol, playerName);
     }
   };
   return (
     <li className="flex flex-col sm:flex-row md:flex-none gap-2 items-start sm:items-center">
-      <span className={`flex gap-4 flex-wrap items-center ${isActive ? "border-2 rounded-lg border-pink-400 px-4 py-2":""}`}>
+      <span
+        className={`flex gap-4 flex-wrap items-center ${
+          isActive ? "border-2 rounded-lg border-pink-400 px-4 py-2" : ""
+        }`}
+      >
         {isEditing ? (
           <input
             type="text"

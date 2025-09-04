@@ -24,12 +24,16 @@ const deriveActivePlayer = (gameTurns) => {
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
   const [winner, setWinner] = useState(null);
+  const [player, setPlayer] = useState({
+    X: "player 1",
+    O: "player 2",
+  });
 
   // derive active player
   const activePlayer = deriveActivePlayer(gameTurns);
 
   // derive game board from turns
-  const gameBoard = initialGameboard
+  const gameBoard = initialGameboard.map((inner)=>[...inner]);
   for (const turn of gameTurns) {
     const { square, player } = turn;
     const { row, col } = square;
@@ -37,7 +41,7 @@ function App() {
   }
 
   useEffect(() => {
-    let newWinner = null
+    let newWinner = null;
     for (const combination of WINNING_COMBINATION) {
       const firstSquareSymbol =
         gameBoard[combination[0].row][combination[0].col];
@@ -52,12 +56,12 @@ function App() {
         firstSquareSymbol === thirdSquareSymbol
       ) {
         console.log("you win");
-        newWinner = firstSquareSymbol
-        break
+        newWinner = player[firstSquareSymbol];
+        break;
       }
     }
-    setWinner(newWinner)
-  },[gameTurns]);
+    setWinner(newWinner);
+  }, [gameTurns]);
 
   const hasdraw = gameTurns.length === 9 && !winner;
 
@@ -73,14 +77,25 @@ function App() {
   };
 
   // rematch the game
-  const handleRematch = ()=>{
-    setGameTurns([])
-    setWinner(null)
-  }
-  useEffect(() => {
-    console.log("activePlayer updated:", activePlayer);
-  }, [activePlayer]);
+  const handleRematch = () => {
+    setGameTurns([]);
+    setWinner(null);
+  };
+  // useEffect(() => {
+  //   console.log("activePlayer updated:", activePlayer);
+  // }, [activePlayer]);
 
+  // get the player name
+  const handleGetPlayerName = (symbol, newName) => {
+    setPlayer((prevplayer) => {
+      return {
+        ...prevplayer,
+        [symbol]: newName,
+      };
+    });
+  };
+
+  console.log(player)
   return (
     <div>
       <Navbar />
@@ -90,7 +105,8 @@ function App() {
         ActivePlayer={activePlayer}
         winner={winner}
         draw={hasdraw}
-        rematch = {handleRematch}
+        rematch={handleRematch}
+        onChangeName = {handleGetPlayerName}
       />
       <Log turns={gameTurns} />
     </div>
