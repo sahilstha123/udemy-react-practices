@@ -29,7 +29,7 @@ function App() {
   const activePlayer = deriveActivePlayer(gameTurns);
 
   // derive game board from turns
-  const gameBoard = initialGameboard.map((innerArray) => [...innerArray]);
+  const gameBoard = initialGameboard
   for (const turn of gameTurns) {
     const { square, player } = turn;
     const { row, col } = square;
@@ -72,6 +72,11 @@ function App() {
     });
   };
 
+  // rematch the game
+  const handleRematch = ()=>{
+    setGameTurns([])
+    setWinner(null)
+  }
   useEffect(() => {
     console.log("activePlayer updated:", activePlayer);
   }, [activePlayer]);
@@ -85,6 +90,7 @@ function App() {
         ActivePlayer={activePlayer}
         winner={winner}
         draw={hasdraw}
+        rematch = {handleRematch}
       />
       <Log turns={gameTurns} />
     </div>

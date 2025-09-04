@@ -3,7 +3,7 @@ import Player from "./Player";
 import Gameboard from "./Gameboard";
 import GameOver from "./GameOver";
 
-const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winner, draw}) => {
+const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winner, draw,rematch}) => {
   
   return (
     <main className="relative">
@@ -14,10 +14,10 @@ const Main = ({ActivePlayer, OnSelectPlayer, gameboard,winner, draw}) => {
            <Player player="player 1" symbol = "X" isActive = {ActivePlayer === "X"}/>
            <Player player="player 2" symbol = "0" isActive = {ActivePlayer === "O"}/>
           </ol>
-          <Gameboard  OnSelectPlayer={OnSelectPlayer} gameboard = {gameboard} />
+          <Gameboard  OnSelectPlayer={OnSelectPlayer} gameboard = {gameboard}  />
         </div>
       </div>
-      {(winner || draw) && <GameOver winner={winner}/>}
+      {(winner || draw) && <GameOver winner={winner} rematch={rematch}/>}
     </main>
   );
 };
