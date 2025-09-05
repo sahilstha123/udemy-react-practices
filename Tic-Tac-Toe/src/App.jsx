@@ -105,6 +105,7 @@ function App() {
         ActivePlayer={activePlayer}
         winner={winner}
         draw={hasdraw}
+        playername = {player}
         rematch={handleRematch}
         onChangeName = {handleGetPlayerName}
       />
