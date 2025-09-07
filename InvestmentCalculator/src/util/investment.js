@@ -7,7 +7,7 @@ export function calculateInvestmentResults({
 }) {
   const annualdata = [];
   let investmentValue = initialInvestment;
-  for (i = 0; i < duration; i++) {
+  for (let i = 0; i < duration; i++) {
     const interestEarnedInYear = investmentValue * (expectedReturn / 100);
     investmentValue += interestEarnedInYear + annualInvestment;
     annualdata.push({
@@ -23,7 +23,7 @@ export function calculateInvestmentResults({
 // currency formatter in Nepalese Rupees
 export const formatter = new Intl.NumberFormat("en-NP", {
   style: "currency",
-  currency: "NP",
+  currency: "NPR",
   minimumFractionDigits: 0,
   maximumFractionDigits: 0,
 });
