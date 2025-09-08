@@ -28,19 +28,22 @@ The app shows results in a **paginated table** with detailed breakdowns of yearl
 ---
 
 ## 📂 Project Structure
+
+```plaintext
 ├── src
-│ ├── Components
-│ │ ├── Navbar.jsx
-│ │ ├── CalculatorForm.jsx
-│ │ └── TableForm.jsx
-│ ├── util
-│ │ └── investment.js
-│ ├── App.jsx
-│ ├── App.css
-│ └── main.jsx
+│   ├── Components
+│   │   ├── Navbar.jsx
+│   │   ├── CalculatorForm.jsx
+│   │   └── TableForm.jsx
+│   ├── util
+│   │   └── investment.js
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
 ├── index.html
 ├── package.json
 └── README.md
+```
 ---
 
 ## ⚡ Getting Started
