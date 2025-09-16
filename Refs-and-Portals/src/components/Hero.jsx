@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const Hero = () => {
+  const playerName = useRef();
   const [name, setName] = useState("");
-  const [submittedName, setSubmittedName] = useState("");
+  // const [submittedName, setSubmittedName] = useState("");
 
-  const handleOnchange = (e) => {
-    setName(e.target.value);
-  };
+  // const handleOnchange = (e) => {
+  //   setName(e.target.value);
+  // };
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    setSubmittedName(name);
-    setName("");
+    // setSubmittedName(name);
+    setName(playerName.current.value);
+    // setName("");
   };
 
   return (
@@ -24,7 +26,7 @@ const Hero = () => {
       </p>
 
       <h5 className="text-green-700 font-bold text-lg sm:text-xl">
-        Welcome {submittedName ? submittedName : "Unknown entity"}
+        Welcome {name?.trim() || "Unknown entity"}
       </h5>
 
       <form onSubmit={handleOnSubmit}>
@@ -32,10 +34,11 @@ const Hero = () => {
           <input
             type="text"
             name="name"
-            value={name}
+            // value={name}
+            ref={playerName}
             placeholder="Enter your name"
             className="w-1/2 sm:w-2/3 py-2 px-2 border border-r-0 border-green-700 focus:outline-none focus:ring-0 rounded-l-md text-gray-300 text-sm sm:text-base"
-            onChange={handleOnchange}
+            // onChange={handleOnchange}
           />
           <button
             type="submit"
