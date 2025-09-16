@@ -17,8 +17,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="bg-gray-900 w-full max-w-xl m-4 mt-10  p-6 sm:p-10 rounded-lg text-gray-300 text-center shadow-lg">
-      <h1 className="font-bold text-2xl sm:text-3xl">
+<div className="text-center ">      <h1 className="font-bold text-2xl sm:text-3xl">
         The <span className="text-sky-500">Almost</span> Final Countdown
       </h1>
       <p className="my-2 text-sm sm:text-base">
