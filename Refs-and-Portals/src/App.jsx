@@ -6,8 +6,8 @@ import TimerChallenge from "./components/TimerChallenge";
 
 function App() {
   const challenges = [
-    {name:"Easy", targetTime:20},
-    {name:"Not Easy", targetTime:10},
+    {name:"Easy", targetTime:1},
+    {name:"Not Easy", targetTime:1},
     {name:"Getting Tough",targetTime:5},
     {name:"Pros Only", targetTime:10},
   ]
