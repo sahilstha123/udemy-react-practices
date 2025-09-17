@@ -4,18 +4,15 @@ import ResultModal from "./ResultModal";
 const TimerChallenge = ({ challenges }) => {
   // useRef to store the timer id (persistent across renders)
   const timer = useRef();
-  const dialog = useRef();
-  /**
-   * activeTimers state will hold an array of objects
-   * Each object has:
-   *   - timestarted: boolean (whether the timer is running)
-   *   - Expired: boolean (whether the timer has expired)
-   */
+  const modalref = useRef();
+ 
+  const [currentTargetTime, setCurrentTargetTime] = useState()
   const [activeTimers, setActiveTimers] = useState(
     challenges.map(() => ({ timestarted: false, Expired: false }))
   );
 
   const handleOnStart = (index, targetTime) => {
+    setCurrentTargetTime(targetTime)
     // mark this challenge as started
     const StartTime = [...activeTimers];
     StartTime[index] = { timestarted: true, Expired: false };
@@ -23,10 +20,13 @@ const TimerChallenge = ({ challenges }) => {
 
     // after targetTime seconds, mark as expired
     timer.current = setTimeout(() => {
-      const updateTimers = [...activeTimers];
-      updateTimers[index] = { timestarted: false, Expired: true };
-      setActiveTimers(updateTimers);
-      dialog.current.showModal();
+      setActiveTimers((prevTimers) => {
+        const newTimers = [...prevTimers];
+        newTimers[index] = { timestarted: false, Expired: true };
+        return newTimers;
+      });
+
+      modalref.current.open();
     }, targetTime * 1000);
   };
 
@@ -52,7 +52,7 @@ const TimerChallenge = ({ challenges }) => {
           {/* Show "You lost" if timer expired */}
           {activeTimers[index]?.Expired && <p>You lost</p>}
 
-          <ResultModal ref={dialog} timeChanger={item?.targetTime} />
+          <ResultModal ref={modalref} timeChanger={currentTargetTime} />
 
           {/* Challenge duration */}
           <p className="border px-2 py-1 w-36 mb-8">
