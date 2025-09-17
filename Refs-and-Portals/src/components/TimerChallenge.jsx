@@ -4,7 +4,7 @@ import ResultModal from "./ResultModal";
 const TimerChallenge = ({ challenges }) => {
   // useRef to store the timer id (persistent across renders)
   const timer = useRef();
-
+  const dialog = useRef();
   /**
    * activeTimers state will hold an array of objects
    * Each object has:
@@ -15,7 +15,6 @@ const TimerChallenge = ({ challenges }) => {
     challenges.map(() => ({ timestarted: false, Expired: false }))
   );
 
-  
   const handleOnStart = (index, targetTime) => {
     // mark this challenge as started
     const StartTime = [...activeTimers];
@@ -27,6 +26,7 @@ const TimerChallenge = ({ challenges }) => {
       const updateTimers = [...activeTimers];
       updateTimers[index] = { timestarted: false, Expired: true };
       setActiveTimers(updateTimers);
+      dialog.current.showModal();
     }, targetTime * 1000);
   };
 
@@ -39,8 +39,6 @@ const TimerChallenge = ({ challenges }) => {
 
   return (
     <div className="mt-10 grid gird-cols-1 md:grid-cols-2 gap-5 md:gap-10">
-
-     
       {challenges.map((item, index) => (
         <div
           key={index}
@@ -53,7 +51,8 @@ const TimerChallenge = ({ challenges }) => {
 
           {/* Show "You lost" if timer expired */}
           {activeTimers[index]?.Expired && <p>You lost</p>}
-           {activeTimers[index]?.Expired && <ResultModal timeChanger={item?.targetTime}/>}
+
+          <ResultModal ref={dialog} timeChanger={item?.targetTime} />
 
           {/* Challenge duration */}
           <p className="border px-2 py-1 w-36 mb-8">

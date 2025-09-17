@@ -4,3 +4,10 @@
     top: 50%;
     transform: translate(-50%,-50%);
 }
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  
+}
+
+

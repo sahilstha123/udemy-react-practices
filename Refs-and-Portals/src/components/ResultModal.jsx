@@ -1,8 +1,8 @@
 import React from "react";
 
-const ResultModal = ({ results, timeChanger }) => {
+const ResultModal = ({ results, timeChanger,ref }) => {
   return (
-    <dialog open className="p-4 w-9/12 md:w-4/12 md:p-10 rounded-lg dialog text-left bg-blue-200">
+    <dialog ref={ref} className="p-4 w-9/12 md:w-4/12 md:p-10 rounded-lg dialog text-left bg-blue-200">
       <h2 className="text-4xl font-bold font-mono ">You {results} lost</h2>
       <p className="text-xl">
         The target Time was <strong className="text-green-700">{timeChanger}</strong>
