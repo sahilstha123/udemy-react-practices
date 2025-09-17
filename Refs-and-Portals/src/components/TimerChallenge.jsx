@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import ResultModal from "./ResultModal";
 
 const TimerChallenge = ({ challenges }) => {
   // useRef to store the timer id (persistent across renders)
@@ -38,6 +39,8 @@ const TimerChallenge = ({ challenges }) => {
 
   return (
     <div className="mt-10 grid gird-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+
+     
       {challenges.map((item, index) => (
         <div
           key={index}
@@ -50,6 +53,7 @@ const TimerChallenge = ({ challenges }) => {
 
           {/* Show "You lost" if timer expired */}
           {activeTimers[index]?.Expired && <p>You lost</p>}
+           {activeTimers[index]?.Expired && <ResultModal timeChanger={item?.targetTime}/>}
 
           {/* Challenge duration */}
           <p className="border px-2 py-1 w-36 mb-8">
