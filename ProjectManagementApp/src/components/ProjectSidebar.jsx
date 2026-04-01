@@ -1,14 +1,20 @@
 import React from 'react'
 import Button from './Button'
 
-const ProjectSidebar = ({handleStartAddProject}) => {
+const ProjectSidebar = ({handleStartAddProject, projects, OnSelectProject}) => {
     return (
         <aside className='w-1/3 px-8 py-16 bg-stone-900 text-stone-50 md:w-72 rounded-r-xl'>
             <h2 className='mb-8 font-bold uppercase md:text-xl text-stone-200'>Your Projects</h2>
             <div>
                 <Button onClick = {handleStartAddProject}> + Add Project </Button>
             </div>
-            <ul></ul>
+            <ul className='mt-8'>
+                {projects.map((item)=>(
+                    <li key={item.id}>
+                        <button className='w-full text-left px-2 py-1 rounded-sm hover:bg-stone-800 cursor-pointer text-stone-400' onClick={()=>OnSelectProject(item.id)}>{item.title}</button>
+                    </li>
+                ))}
+            </ul>
         </aside>
     )
 }
